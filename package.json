@@ -1,0 +1,46 @@
+{
+  "name": "grunt-bitballoon",
+  "description": "Deploy to BitBalloon",
+  "version": "0.1.0",
+  "homepage": "https://github.com/BitBalloon/grunt-bitballoon",
+  "author": {
+    "name": "Mathias Biilmann Christensen",
+    "email": "mathias@bitballoon.com",
+    "url": "https://www.bitballoon.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BitBalloon/grunt-bitballoon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BitBalloon/grunt-bitballoon/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/BitBalloon/grunt-bitballoon/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "bitballoon": ">= 0.1.2"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
