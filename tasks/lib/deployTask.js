@@ -2,6 +2,7 @@
 
 var bitballoon = require("bitballoon"),
     grunt      = require('grunt'),
+    path       = require('path'),
     _          = grunt.util._;
 
 var DeployTask = function (origTask) {
@@ -22,20 +23,25 @@ DeployTask.prototype = {
       return config.logErrors && grunt.log.error("No site for grunt-bitballoon - skipping deploy");
     }
 
-    client = bitballoon.createClient({access_token: config.token});
+    var client = bitballoon.createClient({access_token: config.token}),
+        done   = this._origTask.async();
+
 
     client.site(config.site.replace(/^https?:\/\//, '').replace(/\/$/, ""), function(err, site) {
       if (err) {
-        return config.logErrors && grunt.log.error("Site not found - skipping deploy");
+        config.logErrors && grunt.log.error("Site not found - skipping deploy");
+        return done(false);
       }
 
-      grun.logSuccess && grunt.log.ok("Deploying to BitBalloon");
+      grunt.logSuccess && grunt.log.ok("Deploying to BitBalloon");
       site.update({dir: path.resolve(config.src)}, function(err) {
         if (err) {
-          return config.logErrors && grunt.log.error("Error during deploy", err);
+          config.logErrors && grunt.log.error("Error during deploy", err);
+          return done(false);
         }
 
         config.logSuccess && grunt.log.ok("Site deployed to " + site.url);
+        return done(true);
       });
     });
   },
@@ -52,7 +58,7 @@ DeployTask.prototype = {
     };
 
     // Combine the options and fileActions as the config
-    return _.extend({}, defaultOpts, opts);
+    return _.extend({}, defaultOpts, this._origTask.data, opts);
   }
 }
 
