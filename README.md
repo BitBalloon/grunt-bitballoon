@@ -30,7 +30,7 @@ A quick reference of options
 * **site** - (*string*) The URL of your BitBalloon site
 * **src** - (*string*) Directory to deploy
 
-By default the plugin will look for a BB_TOKEN and BB_SITE environment variables. You should **always** keep the access_token out of your Github repository either by using environment variables or by using template strings as in the example below.
+By default the plugin will look for BB_TOKEN and BB_SITE environment variables. You should **always** keep the access_token out of your Github repository either by using environment variables or by using template strings as in the example below.
 
 ### Example
 
