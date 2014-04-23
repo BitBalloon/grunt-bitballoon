@@ -18,7 +18,7 @@ grunt.loadNpmTasks('grunt-bitballoon');
 Before configuring the Gruntfile you'll need to get a BitBalloon API access_token and do an initial manual deploy to create the site.
 
 * Register your [BitBalloon API Client](https://www.bitballoon.com/applications)
-* Deploy a through the [bitballoon.com web ui](https://www.bitballoon.com) and
+* Deploy a site through the [bitballoon.com web ui](https://www.bitballoon.com)
 
 ## Options
 
