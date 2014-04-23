@@ -25,19 +25,19 @@ DeployTask.prototype = {
     client = bitballoon.createClient({access_token: config.token});
 
     client.site(config.site.replace(/^https?:\/\//, '').replace(/\/$/, ""), function(err, site) {
+      if (err) {
+        return config.logErrors && grunt.log.error("Site not found - skipping deploy");
+      }
+
+      grun.logSuccess && grunt.log.ok("Deploying to BitBalloon");
+      site.update({dir: path.resolve(config.src)}, function(err) {
         if (err) {
-          return config.logErrors && grunt.log.error("Site not found - skipping deploy");
+          return config.logErrors && grunt.log.error("Error during deploy", err);
         }
 
-        grun.logSuccess && grunt.log.ok("Deploying to BitBalloon");
-        site.update({dir: config.src}, function(err) {
-          if (err) {
-            return config.logErrors && grunt.log.error("Error during deploy", err);
-          }
-
-          config.logSuccess && grunt.log.ok("Site deployed to " + site.url);
-        });
+        config.logSuccess && grunt.log.ok("Site deployed to " + site.url);
       });
+    });
   },
 
   getConfig: function() {
