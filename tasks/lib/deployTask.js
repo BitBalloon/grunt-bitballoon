@@ -58,7 +58,7 @@ DeployTask.prototype = {
     };
 
     // Combine the options and fileActions as the config
-    return _.extend({}, defaultOpts, this._origTask.data, opts);
+    return _.extend({}, defaultOpts, opts, this._origTask.data);
   }
 }
 
