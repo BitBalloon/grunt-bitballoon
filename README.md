@@ -41,10 +41,10 @@ This is **important because you should never check in your BitBalloon token to g
 
 ```javascript
 grunt.initConfig({
-  bb: grunt.file.readJSON('~/grunt-bitballoon.json'),
+  bb: grunt.file.readJSON('./grunt-bitballoon.json'),
   bitballoon: {
     options: {
-      token: '<%= bb.key %>',
+      token: '<%= bb.token %>',
       src: 'dist'
     },
     dev: {
